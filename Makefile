@@ -3,12 +3,12 @@ PKG := "C\:Users\admin\github\$(PROJECT_NAME)"
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
 GO_FILES := $(shell find . -name '*.go' | grep -v /vendor/ | grep -v _test.go)
  
-.PHONY: all dep lint vet test test-coverage build clean
+.PHONY: all
  
 all: build
 
 dep: ## Get the dependencies
-	@go mod download
+	go mod download
 
 lint: ## Lint Golang files
 	@golint -set_exit_status ${PKG_LIST}
@@ -24,7 +24,7 @@ test-coverage: ## Run tests with coverage
 	@cat cover.out >> coverage.txt
 
 build: dep ## Build the binary file
-	@go build -o main $(PKG)
+	go build -o main $(PKG)
  
 clean: ## Remove previous build
 	@rm -f $(PROJECT_NAME)/build

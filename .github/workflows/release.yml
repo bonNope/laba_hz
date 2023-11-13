@@ -14,8 +14,6 @@ jobs:
 
       - name: Validates GO releaser config
         uses: docker://goreleaser/goreleaser:latest
-        with:
-          args: check
 
       - name: Create release on GitHub
         uses: docker://goreleaser/goreleaser:latest

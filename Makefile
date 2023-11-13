@@ -1,5 +1,5 @@
-PROJECT_NAME := "github-actions-demo-go"
-PKG := "github/brpaz/$(PROJECT_NAME)"
+PROJECT_NAME := "laba_hz"
+PKG := "C\:Users\admin\github\$(PROJECT_NAME)"
 PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
 GO_FILES := $(shell find . -name '*.go' | grep -v /vendor/ | grep -v _test.go)
  
@@ -24,7 +24,7 @@ test-coverage: ## Run tests with coverage
 	@cat cover.out >> coverage.txt
 
 build: dep ## Build the binary file
-	@go build -o main .
+	@go build -o main $(PKG)
  
 clean: ## Remove previous build
 	@rm -f $(PROJECT_NAME)/build
